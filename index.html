@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HONG KONG
+MULTIANGLE REPLAY</title>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="Styling/sample.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <!-- Library that allows for multi-select 'dropdowns' -->
+ <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+
+  <script src="src/ctrl/initialize.js"></script>
+  <script src="src/model/sheetStats.js"></script>
+  <script src="src/view/sheetLogic.js"></script>
+
+  <!-- datepicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
+  <!-- Moment JS, required by Tempus dominus  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+
+  <!-- Tempus Dominus, DateTimePicker -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+
+  <!-- grants access to some basic icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <script>
+   window.addEventListener( "load", sheetProj.view.sheetLogic.setupUserInterface);
+  </script>
+</head>
+
+<style>
+</style>
+
+
+<body class="fullWidth">
+  <!-- Facebook SDK: https://developers.facebook.com/docs/plugins/embedded-video-player/ -->
+  <!-- https://developers.facebook.com/docs/javascript/reference/v5.0 -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
+
+  <!-- END: Facebook SDK -->
+
+  <div id="themeHeader" class="fullWidth">
+    <div id="logo"></div>
+    <div id="searchControl" style="">
+
+      <div id="timeGroup">
+        <h5 class="placard">Time Range:</h5>
+
+        <div id="startTimeSelector" >
+
+          <div style="display:flex; height:1.2rem;">
+            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                <input placeholder="From..." id="startDateInput" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+            <div style="padding-left:1rem; width:4rem"> From</div>
+          </div>
+
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker1').datetimepicker();
+                });
+
+
+            </script>
+
+          </div>
+
+        <div id="endTimeSelector">
+
+            <div style="display:flex ; height:1.2rem;">
+              <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                  <input placeholder="To..." id="endDateInput" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                  <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+              </div>
+            <div style="padding-left:1rem; width:4rem"> To </div>
+          </div>
+              <script type="text/javascript">
+                  $(function () {
+                      $('#datetimepicker2').datetimepicker();
+                  });
+
+
+              </script>
+
+          </div>
+      </div>
+
+      <button id="searchButton"><i class="fa fa-search"></i> Search</button>
+
+      <div id="locationGroup">
+        <h5 class="placard">Location:</h5>
+        <select  multiple="multiple" id="locationSelector" >
+
+        </select>
+      </div>
+      <div id="sourceGroup">
+        <h5 class="placard">Source:</h5>
+        <select  multiple="multiple" id="sourceSelector">
+
+        </select>
+      </div>
+    </div>
+
+    <div id="playerControl">
+      <div>
+      <div class="placard">Layout:</div>
+      <select id="displaySelect">
+        <option value="1">1 Column</option>
+        <option value="2">2 Column</option>
+        <option value="3">3 Column</option>
+        <option value="4">4 Column</option>
+        <option value="5">5 Column</option>
+        <option value="6">6 Column</option>
+      </select>
+    </div>
+    <div id="maxPlayerGroup">
+      <div class="placard">Max Results:</div>
+      <input value="10" id="videoMax" step="1" type="number" min="1" max="30"/>
+    </div>
+      <div id="startStopButtons">
+        <button id="playButton"  Title="Play All" onclick="videoControl.playAll()"></button>
+      </div>
+      <button id="linkShare" onclick="urlSystem.copySearchResult()"><i class="	fa fa-share-alt"></i></button>
+
+
+
+  </div>
+  <div id="iconGroup">
+    <div title="Icon by Dave Gandy" id="languageSelector"></div>
+    <div id="infoIcon">
+
+    </div>
+  </div>
+
+  </div>
+
+
+  <div id="displayBox" class="fullWidth">
+    <div id="introExplainer">
+      <b>Hello!  Need a quick tour?  If so, let me help out!</b>
+
+      <div class="tutorialRow" style="">
+        <!-- Change value under 'src=' to change the image shown in the tutorial image slot  -->
+        <img src= "../images/iconSample.png" class="tutorialImage" style=""/>
+        <!-- Change text inside div to change the tutorial text slot -->
+        <div class="tutorialExplanation">
+        Want to learn about the reasons behind this project?  Go ahead and click the 'i' button on the top right.<br>
+        If you want to change the language used throughout the site click the button just to the left of that one.  They look like these icons here!
+        </div>
+      </div>
+      <div class="tutorialRow" style="">
+        <img src= "../images/timeSample.png" class="longTutorialImage" style=""/>
+        <div class="tutorialExplanation">
+        We've collected a huge bundle of videos for you to search through.  To search through it the first thing you need to know is that you can search for videos that were recorded in a specific slice of real life time.
+        <br><br>
+        The leftmost section in the row above has two slots.  Click the calendar of the topmost one to set the start point of the date/time slice you want to see.  Note that this start point can be when the video began in realtime or some point it simply covers.<br>
+        The bottom slot allows you to set the endpoint of the date/time slice you want to see (leaving it black will have it default to the current real life time).
+        Start time is a *mandatory* input.
+        </div>
+      </div>
+      <div class="tutorialRow" style="">
+        <img src= "../images/dropdownSample.png" class="longTutorialImage" style=""/>
+        <div class="tutorialExplanation">
+        We also allow you to search for videos that were shot in specific places, use the 'Filter By Location' dropdowns in the top-right to narrow your search to certain locations.
+        <br><br>
+        Similarly if you only want to see videos shared by specific sources you can narrow your search that way as well with the 'Filter By Source' dropdown.
+        <br><br>
+        If you change your mind about wanting to filter by one of these lists, scroll to the top of it and select "DON'T FILTER"
+        <br><br>
+        Note that you can select multiple locations or sources by holding [SHIFT] or [CTRL] as you click!
+        </div>
+      </div>
+      <div class="tutorialRow" style="">
+        <img src= "../images/searchSample.png" class="longTutorialImage" style=""/>
+        <div class="tutorialExplanation">
+        Once you've narrowed your search as much as you'd like just click the search button in the top-center! <br> Oh, but just be aware that once you do me and all my helpful advice will dissapear~
+        </div>
+      </div>
+      <div class="tutorialRow" style="">
+        <img src= "../images/displaySample.png" class="longTutorialImage" style=""/>
+        <div class="tutorialExplanation">
+         Depending on your device or preferences you might want to have your video players displayed in different ways. <br> The Layout dropdown lets you choose the maximum columns of videos displayed at any given time.
+         Additionally Max Results lets you set a limit (from 1-30) for the maximum number of videos returned
+        </div>
+      </div>
+      <div class="tutorialRow" style="">
+        <img src= "../images/playPauseSample.png" class="tutorialImage" style=""/>
+        <div class="tutorialExplanation">
+        You can play, pause, fullscreen, etc. each video individually.  However if you want to play ALL videos at the same time, or pause them ALL at the same time just use the play and pause buttons pictured here.  Note that you probably only see one or the other, as they transition between eachother on click. <br> Also, an important note, the *first* time you click the play button after any given search all videos will automatically fast-forward to whatever the start point that you selected was in your search query.
+        </div>
+      </div>
+      <div class="tutorialRow" style="">
+        <img src= "../images/shareSample.png" class="tutorialImage" style=""/>
+        <div class="tutorialExplanation">
+          After searching through our collection did you find a result that really speaks to you or that you'd like to watch together with someone else?
+           <br><br> Click the share button pictured to  have a sharable link copied to your clipboard.  That link will take people to the same collection of videos that you last searched for which also makes it a handy way to come back to a collection of videos you'd like to see again in the future.
+        </div>
+      </div>
+
+      <div class="tutorialRow" style="">
+        <img src= "../images/logoSample.png" class="tutorialImage" style=""/>
+        <div class="tutorialExplanation">
+          Want to find our social links and get a better idea of what we're all about?  Just click our logo in the top-left.  He looks like this little guy here!
+        </div>
+      </div>
+
+      <div class="tutorialRow" style="">
+        <img src= "../images/removeButton.png" class="tutorialImage" style=""/>
+        <div class="tutorialExplanation">
+          Want to trim videos from your results?  Hover over the middle-right of any video player and a bar with the button pictured will appear.  Click it to remove the player.  When you share video collections through the Share button mentioned earlier videos that you ignored will also be represented in the share url.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div id="alertBanner"></div>
+
+
+
+
+</body>

@@ -1,0 +1,309 @@
+.hoverFlow {
+  overflow: hidden;
+}
+
+.hoverflow:hover {
+  overflow: auto;
+}
+
+#themeHeader {
+  display: flex;
+  width: 100vw;
+  background-color: #28A366;
+  height: 18vh;
+}
+#themeHeader #logo {
+  width: 5%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-image: url("../images/siteLogo.png");
+  margin-left: 3vh;
+}
+#themeHeader #logo:hover {
+  cursor: pointer;
+  background-image: url("../images/logoHover.png");
+}
+#themeHeader #searchControl {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#themeHeader #searchControl #timeGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  min-width: 10rem;
+  max-width: 60%;
+}
+#themeHeader #searchControl #timeGroup .bootstrap-datetimepicker-widget {
+  width: 150% !important;
+}
+#themeHeader #searchControl #timeGroup #startDateInput {
+  height: 100%;
+}
+#themeHeader #searchControl #timeGroup #endDateInput {
+  height: 100%;
+}
+#themeHeader #searchControl #searchButton {
+  max-width: 10%;
+  border-radius: 15%;
+  background-color: #C9D6CF;
+  color: #28A366;
+}
+#themeHeader #searchControl #locationGroup {
+  max-width: 15%;
+}
+#themeHeader #searchControl #sourceGroup {
+  max-width: 15%;
+}
+#themeHeader #playerControl {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#themeHeader #playerControl #playButton {
+  background-size: 100% 100%;
+  background-image: url("../images/playButton.png");
+  background-color: Transparent;
+  outline: none;
+  height: 10vh;
+  width: 10vh;
+  border: none;
+  background-repeat: no-repeat;
+}
+#themeHeader #playerControl #playButton:active {
+  background-size: 80% 80%;
+}
+#themeHeader #playerControl #pauseButton {
+  background-size: 100% 100%;
+  background-image: url("../images/pauseButton.png");
+  background-color: Transparent;
+  outline: none;
+  height: 10vh;
+  width: 10vh;
+  border: none;
+  background-repeat: no-repeat;
+}
+#themeHeader #playerControl #pauseButton:active {
+  background-size: 80% 80%;
+}
+#themeHeader #playerControl #linkShare {
+  border-radius: 5%;
+}
+#themeHeader #iconGroup {
+  display: flex;
+  width: 10%;
+}
+#themeHeader #iconGroup #infoIcon {
+  height: 7vh;
+  width: 7vh;
+  margin-right: 3vh;
+  background-size: 100% 100%;
+  background-image: url("../images/infoIcon.png");
+  background-color: Transparent;
+  outline: none;
+  border: none;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+#themeHeader #iconGroup #infoIcon:active {
+  background-size: 80% 80%;
+}
+#themeHeader #iconGroup #languageSelector {
+  height: 7vh;
+  width: 7vh;
+  margin-right: 3vh;
+  background-size: 100% 100%;
+  background-image: url("../images/languageIcon.png");
+  background-color: Transparent;
+  outline: none;
+  border: none;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+#themeHeader #iconGroup #languageSelector:active {
+  background-size: 80% 80%;
+}
+
+#displayBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 83vh;
+  padding-top: 5%;
+}
+#displayBox #introExplainer {
+  margin-left: 15%;
+}
+#displayBox #introExplainer .tutorialRow {
+  display: flex;
+  border: 2px solid black;
+  height: 15vh;
+  width: 70%;
+}
+#displayBox #introExplainer .tutorialRow .tutorialImage {
+  height: 100%;
+  border: 2px solid black;
+  width: 15vh;
+}
+#displayBox #introExplainer .tutorialRow .longTutorialImage {
+  height: 100%;
+  border: 2px solid black;
+  width: auto;
+}
+#displayBox #introExplainer .tutorialRow .tutorialExplanation {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.customButton {
+  background-size: 100% 100%;
+  cursor: pointer;
+  border: none;
+}
+
+.select2-selection--multiple {
+  overflow: hidden !important;
+  max-height: 12vh !important;
+  min-height: 2rem !important;
+}
+
+.videoResult {
+  position: relative;
+  background-color: grey;
+  background-image: url("../images/pixelStatic.png");
+  background-size: 100% 100%;
+  display: table;
+}
+.videoResult .videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 15px solid transparent;
+  border-bottom: 45px solid transparent;
+  border-image: url("../images/playerBorder.png") 40% stretch;
+  pointer-events: none;
+}
+.videoResult .videoOverlay .arrangementBar {
+  position: absolute;
+  width: 10%;
+  top: 33%;
+  right: -15px;
+  height: 33%;
+  pointer-events: all;
+  opacity: 0;
+  background-color: #C9D6CF;
+  display: flex;
+  flex-direction: column;
+}
+.videoResult .videoOverlay .arrangementBar .removalButton {
+  background-color: grey;
+  background-image: url("../images/removeButton.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+}
+.videoResult .videoOverlay .arrangementBar:hover {
+  opacity: 1;
+}
+
+body {
+  background-color: #C9D6CF;
+}
+body button:hover {
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed !important;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+}
+
+#alertBanner {
+  height: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  text-align: center;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  transition: height 2s;
+  overflow: hidden;
+}
+
+.activeAlert {
+  height: 5vh !important;
+}
+
+.languageButton {
+  width: 20vh;
+  height: 15vh;
+}
+
+.input-group-append {
+  height: 1.2rem;
+  width: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.closableDiv {
+  position: relative;
+}
+
+.closeButton {
+  opacity: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 25px;
+  width: 25px;
+  background-color: grey;
+  background-image: url("https://res.cloudinary.com/metaverse/image/upload/v1548289539/icons8-delete-48.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  transition: opacity 0.5s;
+  z-index: 5;
+}
+
+.closableDiv:hover .closeButton {
+  opacity: 1;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}
+
+.select2 {
+  width: 100% !important;
+}
+
+.placard {
+  font-size: 75%;
+}
+
+.select2-results {
+  width: 200%;
+}
+
+.select2-results__options {
+  background-color: white;
+  width: 200%;
+}
+
+/*# sourceMappingURL=sample.css.map */
