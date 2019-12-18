@@ -41,17 +41,18 @@ $flairColor:#28A366;
   display:flex;
   width:100vw;
   background-color:$flairColor;
-  height:18vh;
+  height:10vh;
   // align-items: center;
 
   #logo{
     // width:16vh;
     // height:16vh;
-    width:5%;
-    height:100%;
+    width:10vh;
+    height:10vh;
     background-size:100% 100%;
     background-image:url($siteLogo);
     margin-left:3vh;
+
 
   }
 

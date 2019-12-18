@@ -8,13 +8,13 @@ sheetProj.view.sheetLogic = {
     videoControl.resizePlayers();
     window.addEventListener('resize', videoControl.resizePlayers);
     // window.addEventListener('resize', iosRes.widthFix);
-    $(".displaySelect").change(uiSystem.displayChange);
+    $("#displaySelect").change(uiSystem.displayChange);
     $("#languageSelector").click(uiSystem.displayLanguages);
     $("#infoIcon").click(uiSystem.displayInfo);
     $("#logo").click(uiSystem.displayInfo);
     $("#searchButton").click(searchSystem.searchByButton);
     $("#videoMax").change(searchSystem.setMaxPlayers);
-  
+
 
 
 
@@ -195,6 +195,9 @@ let searchSystem={
     .then(blob => blob.json())
     .then(data => {
       console.table(data);
+      console.log("querySent");
+      console.log(query);
+      console.log(url);
 
       //document.querySelector("pre").innerHTML = JSON.stringify(data, null, 2);
       if (ignoreList){
@@ -237,6 +240,10 @@ let searchSystem={
         parsedEnd=`${timeEnd.getFullYear()}-${timeEnd.getMonth()+1}-${timeEnd.getDate()}T${("0"+timeEnd.getHours()).slice(-2)}:${timeEnd.getMinutes()}:00Z`;
         solrDate+=`[* TO ${parsedStart}] AND videoEndDate:[${parsedEnd} TO NOW])OR(videoDate:[${parsedStart} TO ${parsedEnd}])OR(videoEndDate:[${parsedStart} TO ${parsedEnd}])`;
 
+        if (timeEnd.getTime()<timeStart.getTime() ){
+          alert("Start time must be before the selected end time!");
+          return;
+        }
       }else{
         solrDate+=`[* TO ${parsedStart}] AND videoEndDate:[${parsedStart} TO *])`;
       }
@@ -355,9 +362,9 @@ let searchSystem={
 
     function fillDropdowns(docs){
       let sources=[],
-        sourceOptions='<option value="NOFILTER">Don`t Filter</option>';
+        sourceOptions='<option value="NOFILTER">SELECT ALL</option>';
       let locations=[],
-        locationOptions='<option value="NOFILTER">Don`t Filter</option>';
+        locationOptions='<option value="NOFILTER">SELECT ALL</option>';
 
 
       //

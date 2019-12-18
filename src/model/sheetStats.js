@@ -34,11 +34,6 @@ let searchSettings={
 }
 let refData={};
 
-let languageOptions={
-  english:{
-
-  },
-}
 
 let ci={
 
