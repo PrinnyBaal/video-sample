@@ -81,7 +81,7 @@ let videoControl={
   },
   createPlayers:(videoDocs)=>{
     let displayHTML=``;
-    let newWidth=Math.round((document.getElementById('displayBox').offsetWidth*.9)/1);
+    let newWidth=Math.round((document.getElementById('displayBox').offsetWidth*.9)*10);
     let newHeight=Math.round(newWidth*0.56260898551);
     $("#displayBox").html(``);
 
