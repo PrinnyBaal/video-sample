@@ -26,14 +26,17 @@ sheetProj.view.sheetLogic = {
 let videoControl={
   getActivePlayers:()=>{
     videoPlayers.length=0;
+
     FB.Event.subscribe('xfbml.ready', function(msg) {
       if (msg.type === 'video') {
         let start= document.getElementById(msg.id).dataset.start;
         videoPlayers.push({player:msg.instance,
                           start:start,
                           solrID:`${msg.id.substr(6)}`});
+
       }
     });
+
   },
   playAll:()=>{
     if (searchSettings.firstPlay){
@@ -61,13 +64,25 @@ let videoControl={
 
   },
   resizePlayers:()=>{
-    let newWidth=(document.getElementById('displayBox').offsetWidth*.9)/userPrefs.gridWidth;
-    let newHeight;
+    let newWidth=Math.round((document.getElementById('displayBox').offsetWidth*.9)/userPrefs.gridWidth);
+    let newHeight=Math.round(newWidth*0.56260898551);
+
     $( ".fb-video" ).css( "width", newWidth);
+    $( ".fb-video" ).css( "height", newHeight);
+    $( ".fb-video span" ).css( "height", newHeight);
+    $("iframe").css("height", newHeight);
+    $("iframe").data("height", newHeight);
+    $("iframe").data("width", newWidth);
+
+    console.log(newHeight);
+
+
 
   },
   createPlayers:(videoDocs)=>{
     let displayHTML=``;
+    let newWidth=Math.round((document.getElementById('displayBox').offsetWidth*.9)/1);
+    let newHeight=Math.round(newWidth*0.56260898551);
     $("#displayBox").html(``);
 
     videoPlayers.length=0;
@@ -82,16 +97,22 @@ let videoControl={
           data-show-text="false"
           id="player${video.id}"
           data-start="${startDate.getTime()+(startDate.getTimezoneOffset()*60*1000)}"
+          data-height="${newHeight}"
+          data-width="${newWidth}"
           >
         </div>
         <div class="videoOverlay"><div class="arrangementBar"><button class="removalButton" onclick="videoControl.removePlayer('video${video.id}', ${video.id})">X</button></div></div>
       </div>`
     });
 
+    // data-height="${newHeight}"
+    // data-width="${newWidth}"
+
     $("#displayBox").html(displayHTML);
     FB.XFBML.parse()
     videoControl.getActivePlayers();
     videoControl.resizePlayers();
+
 
     if (videoDocs.docs.length<1){
       alert("Sorry, no videos found.  Try fewer filters or a wider time range!");
