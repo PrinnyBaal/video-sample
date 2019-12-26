@@ -1,3 +1,30 @@
+.form-control:focus {
+  border-color: #9dd661;
+  box-shadow: inset 0 1px 1px #9dd661, 0 0 8px #9dd661;
+}
+
+button {
+  background-color: white;
+}
+
+button:focus {
+  outline-width: thick;
+  outline-color: #9dd661 !important;
+}
+
+.bootstrap-select .btn:focus {
+  outline: none !important;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+  outline: none !important;
+}
+
+.dropdown-menu {
+  min-width: 5rem !important;
+  max-width: 15rem !important;
+}
+
 .hoverFlow {
   overflow: hidden;
 }
@@ -6,28 +33,97 @@
   overflow: auto;
 }
 
+.dropdown {
+  width: 100% !important;
+}
+
+.dropdown-item.selected {
+  background-color: #28A366;
+}
+
+.dropdown-item:hover {
+  background-color: #9dd661;
+}
+
+#sizeAlert {
+  width: 100%;
+  background-color: black;
+  overflow: hidden;
+  color: white;
+  height: 0px;
+}
+
+#headContainer {
+  display: flex;
+  justify-content: center;
+  background-color: #28A366;
+  height: 100px;
+  width: 100%;
+  overflow: visible;
+}
+
 #themeHeader {
   display: flex;
-  width: 100vw;
-  background-color: #28A366;
-  height: 10vh;
+  width: 1200px;
+  height: 100%;
+  flex-shrink: 0;
 }
 #themeHeader #logo {
-  width: 10vh;
-  height: 10vh;
+  width: 100px;
+  height: 100px;
   background-size: 100% 100%;
   background-image: url("../images/siteLogo.png");
-  margin-left: 3vh;
 }
 #themeHeader #logo:hover {
   cursor: pointer;
   background-image: url("../images/logoHover.png");
 }
 #themeHeader #searchControl {
-  width: 50%;
+  width: 1050px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+#themeHeader #searchControl .buttonUp .dropdown-toggle {
+  height: 50px !important;
+  width: 50px !important;
+  background-image: url("../images/dropperBtn.png");
+  background-size: 100% 100%;
+}
+#themeHeader #searchControl .buttonUp .dropdown-toggle .filter-option {
+  opacity: 0;
+}
+#themeHeader #searchControl .buttonUp .bootstrap-select.show .dropdown-toggle {
+  background-color: grey;
+}
+#themeHeader #searchControl .buttonUp .dropdown-toggle::after {
+  opacity: 0;
+}
+#themeHeader #searchControl #layoutGroup {
+  width: 4em;
+}
+#themeHeader #searchControl #layoutGroup .dropdown {
+  width: 100% !important;
+  height: 2rem;
+}
+#themeHeader #searchControl #layoutGroup .dropdown .btn {
+  height: 2rem !important;
+}
+#themeHeader #searchControl #layoutGroup .dropdown-toggle {
+  height: 50px !important;
+  width: 3em !important;
+}
+#themeHeader #searchControl #maxPlayerGroup #videoMax {
+  width: 3rem !important;
+  height: 2rem;
+}
+#themeHeader #searchControl #maxPlayerGroup #videoMax:focus {
+  outline-color: #9dd661;
+}
+#themeHeader #searchControl #locationLabel {
+  height: 50px;
+  width: 50px;
+  background-image: url("../images/logoHover.png");
 }
 #themeHeader #searchControl #timeGroup {
   display: flex;
@@ -35,8 +131,7 @@
   justify-content: center;
   height: 100%;
   position: relative;
-  min-width: 10rem;
-  max-width: 60%;
+  width: 30%;
 }
 #themeHeader #searchControl #timeGroup .bootstrap-datetimepicker-widget {
   width: 150% !important;
@@ -48,10 +143,12 @@
   height: 100%;
 }
 #themeHeader #searchControl #searchButton {
-  max-width: 10%;
   border-radius: 15%;
-  background-color: #C9D6CF;
-  color: #28A366;
+  height: 75px;
+  width: 75px;
+  background-color: white;
+  color: #9dd661;
+  font-size: 3rem;
 }
 #themeHeader #searchControl #locationGroup {
   max-width: 15%;
@@ -59,64 +156,71 @@
 #themeHeader #searchControl #sourceGroup {
   max-width: 15%;
 }
+#themeHeader #searchControl #playButton {
+  background-size: 100% 100%;
+  background-image: url("../images/faPlay.png");
+  background-color: white;
+  outline: none;
+  height: 75px;
+  width: 75px;
+  border: none;
+  background-repeat: no-repeat;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-image: initial;
+}
+#themeHeader #searchControl #playButton:active {
+  outline: 2px solid #9dd661;
+}
+#themeHeader #searchControl #pauseButton {
+  background-size: 100% 100%;
+  background-image: url("../images/faPause.png");
+  background-color: white;
+  outline: none;
+  height: 75px;
+  width: 75px;
+  border: none;
+  background-repeat: no-repeat;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-image: initial;
+}
+#themeHeader #searchControl #pauseButton:active {
+  outline: 2px solid #9dd661;
+}
 #themeHeader #playerControl {
   display: flex;
-  width: 40%;
+  width: 100px;
   align-items: center;
   justify-content: space-evenly;
 }
-#themeHeader #playerControl #playButton {
-  background-size: 100% 100%;
-  background-image: url("../images/playButton.png");
-  background-color: Transparent;
-  outline: none;
-  height: 10vh;
-  width: 10vh;
-  border: none;
-  background-repeat: no-repeat;
-}
-#themeHeader #playerControl #playButton:active {
-  background-size: 80% 80%;
-}
-#themeHeader #playerControl #pauseButton {
-  background-size: 100% 100%;
-  background-image: url("../images/pauseButton.png");
-  background-color: Transparent;
-  outline: none;
-  height: 10vh;
-  width: 10vh;
-  border: none;
-  background-repeat: no-repeat;
-}
-#themeHeader #playerControl #pauseButton:active {
-  background-size: 80% 80%;
-}
-#themeHeader #playerControl #linkShare {
-  border-radius: 5%;
-}
 #themeHeader #iconGroup {
-  display: flex;
-  width: 10%;
+  width: 50px;
 }
 #themeHeader #iconGroup #infoIcon {
-  height: 7vh;
-  width: 7vh;
-  margin-right: 3vh;
+  height: 45px;
+  width: 45px;
+  margin-top: 4px;
   background-size: 100% 100%;
-  background-image: url("../images/infoIcon.png");
-  background-color: Transparent;
+  background-image: url("../images/faInfo.png");
+  background-color: White;
   outline: none;
   border: none;
   background-repeat: no-repeat;
   cursor: pointer;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-image: initial;
 }
 #themeHeader #iconGroup #infoIcon:active {
-  background-size: 80% 80%;
+  outline: 2px solid #9dd661;
 }
 #themeHeader #iconGroup #languageSelector {
-  height: 7vh;
-  width: 7vh;
-  margin-right: 3vh;
+  height: 50px;
+  width: 50px;
   background-size: 100% 100%;
   background-image: url("../images/languageIcon.png");
   background-color: Transparent;
@@ -126,7 +230,15 @@
   cursor: pointer;
 }
 #themeHeader #iconGroup #languageSelector:active {
-  background-size: 80% 80%;
+  outline: 2px solid #9dd661;
+}
+#themeHeader #iconGroup #linkShare {
+  margin-bottom: 4px;
+  margin-top: 2px;
+  border-radius: 5%;
+  height: 45px;
+  width: 45px;
+  font-size: 2rem;
 }
 
 #displayBox {
@@ -209,6 +321,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   border: 1px solid black;
+  height: 2rem;
 }
 .videoResult .videoOverlay .arrangementBar:hover {
   opacity: 1;
@@ -253,7 +366,7 @@ body button:hover {
 }
 
 .input-group-append {
-  height: 1.2rem;
+  height: 2rem;
   width: 2rem;
 }
 
@@ -289,10 +402,6 @@ body button:hover {
   cursor: pointer;
 }
 
-.select2 {
-  width: 100% !important;
-}
-
 .placard {
   font-size: 75%;
 }
@@ -304,6 +413,17 @@ body button:hover {
 .select2-results__options {
   background-color: white;
   width: 200%;
+}
+
+@media only screen and (max-width: 1199px) {
+  #headContainer {
+    min-width: 1200px;
+  }
+
+  #sizeAlert {
+    height: 2rem;
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=sample.css.map */

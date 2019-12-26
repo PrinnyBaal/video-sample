@@ -11,7 +11,7 @@ sheetProj.view.sheetLogic = {
     $("#displaySelect").change(uiSystem.displayChange);
     $("#languageSelector").click(uiSystem.displayLanguages);
     $("#infoIcon").click(uiSystem.displayInfo);
-    $("#logo").click(uiSystem.displayInfo);
+    $("#logo").click(uiSystem.homeScreen);
     $("#searchButton").click(searchSystem.searchByButton);
     $("#videoMax").change(searchSystem.setMaxPlayers);
 
@@ -101,7 +101,7 @@ let videoControl={
           data-width="${newWidth}"
           >
         </div>
-        <div class="videoOverlay"><div class="arrangementBar"><button class="removalButton" onclick="videoControl.removePlayer('video${video.id}', ${video.id})">X</button></div></div>
+        <div class="videoOverlay"><div class="arrangementBar"><button class="removalButton" onclick="videoControl.removePlayer('video${video.id}', ${video.id})"></button></div></div>
       </div>`
     });
 
@@ -165,6 +165,9 @@ let uiSystem={
   displayInfo:()=>{
     window.location.href = "http://info.melonyeah.com/";
   },
+  homeScreen:()=>{
+    window.location.href = "http://melonyeah.com/";
+  },
   displayLanguages:()=>{
     let elem = document.createElement('div');
     let languageSelect=`
@@ -211,6 +214,7 @@ let searchSystem={
   searchDatabase:(query, ignoreList)=>{
     let url="http://172.105.123.252/"+query;
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    console.log(url);
   //  targetUrl = 'http://catfacts-api.appspot.com/api/facts?number=99'
     fetch(proxyUrl + url)
     .then(blob => blob.json())
@@ -241,9 +245,9 @@ let searchSystem={
       parsedStart,
       parsedEnd;
     let pageSearch=$("#sourceSelector").val(),
-      solrPage="videoPage:";
+      solrPage="videoPage:(";
     let locationSearch=$("#locationSelector").val(),
-      solrLocation="videoLocation:";
+      solrLocation="videoLocation:(";
     let query="";
 
     searchSettings.reset();
@@ -281,6 +285,7 @@ let searchSystem={
         }
         solrPage+=page;
       });
+      solrPage+=")";
 
       if (query){
         query+=" AND ";
@@ -300,9 +305,12 @@ let searchSystem={
       if (query){
         query+=" AND ";
       }
+      solrLocation+=")";
       searchSettings.location=solrLocation;
       query+=solrLocation;
     }
+
+
 
     query+=`&rows=${userPrefs.maxPlayers}`;
 
@@ -383,23 +391,23 @@ let searchSystem={
 
     function fillDropdowns(docs){
       let sources=[],
-        sourceOptions='<option value="NOFILTER">SELECT ALL</option>';
+        sourceOptions='<option data-divider="true"></option>';
       let locations=[],
-        locationOptions='<option value="NOFILTER">SELECT ALL</option>';
-
+        locationOptions='<option data-divider="true"></option>';
+//<option value="NOFILTER">SELECT ALL</option>
 
       //
       docs.forEach((video)=>{
         refData[video.id]=video;
         if (!sources.includes(video.videoPage)){
           sources.push(video.videoPage);
-          sourceOptions+=`<option value="${video.videoPage}">${video.videoPage}</option>`;
+          sourceOptions+=`<option selected value="${video.videoPage}">${video.videoPage}</option>`;
 
         }
         video.videoLocation.forEach((location)=>{
           if (!locations.includes(location)){
             locations.push(location);
-            locationOptions+=`<option value="${location}">${location}</option>`;
+            locationOptions+=`<option selected value="${location}">${location}</option>`;
           }
         });
 
@@ -410,7 +418,8 @@ let searchSystem={
 
       $("#locationSelector").html(locationOptions);
       $("#sourceSelector").html(sourceOptions);
-     $('select').select2();
+     // $('select').select2();
+     $('select').selectpicker();
 
 
     }

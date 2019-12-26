@@ -13,11 +13,12 @@ $siteLogoHover:"../images/logoHover.png";
 
 
 
-$playButton:"../images/playButton.png";
-$pauseButton:"../images/pauseButton.png";
+$playButton:"../images/faPlay.png";
+$pauseButton:"../images/faPause.png";
 
-$infoIcon:"../images/infoIcon.png";
+$infoIcon:"../images/faInfo.png";
 $languageIcon:"../images/languageIcon.png";
+$dropdownBtn:"../images/dropperBtn.png";
 
 
 $playerBorder:"../images/playerBorder.png";
@@ -27,7 +28,55 @@ $removeButton:"../images/removeButton.png";
 $mainColor:#0A100D;
 $secondaryColor:#C9D6CF;
 $flairColor:#28A366;
+$requestColor:#9dd661;
 
+.form-control:focus {
+  border-color: $requestColor;
+  box-shadow: inset 0 1px 1px $requestColor, 0 0 8px $requestColor;
+}
+
+
+button{
+  background-color:white;
+}
+button:focus{
+  outline-width: thick;
+  outline-color:$requestColor !important;
+}
+
+.bootstrap-select .btn:focus {
+    outline: none !important;
+}
+
+
+
+// .btn:focus{
+//   outline-width: thick;
+//   outline-color:$requestColor !important;
+// }
+//
+// .bootstrap-select .dropdown-toggle:focus{
+//   outline-width: thick;
+//   outline-color:$requestColor !important;
+// }
+//
+// select:active, select:hover {
+//   outline-color: red
+// }
+
+
+
+.bootstrap-select{
+  .dropdown-toggle:focus{
+    outline:none !important;
+  }
+}
+
+
+.dropdown-menu{
+  min-width:5rem !important;
+  max-width:15rem !important;
+}
 .hoverFlow{
   overflow:hidden;
 }
@@ -36,22 +85,50 @@ $flairColor:#28A366;
   overflow:auto;
 }
 
+.dropdown{
+  width:100% !important;
+}
 
+.dropdown-item.selected{
+  background-color:$flairColor;
+}
+.dropdown-item:hover{
+  background-color:$requestColor;
+}
+
+
+#sizeAlert{
+  width:100%;
+  background-color:black;
+  overflow:hidden;
+  color:white;
+  height:0px;
+}
+
+#headContainer{
+  display:flex;
+  justify-content:center;
+  background-color:$flairColor;
+  height:100px;
+  width:100%;
+  overflow:visible;
+}
 #themeHeader{
   display:flex;
-  width:100vw;
-  background-color:$flairColor;
-  height:10vh;
+  width:1200px;
+
+  height:100%;
+  flex-shrink:0;
   // align-items: center;
 
   #logo{
     // width:16vh;
     // height:16vh;
-    width:10vh;
-    height:10vh;
+    width:100px;
+    height:100px;
     background-size:100% 100%;
     background-image:url($siteLogo);
-    margin-left:3vh;
+    //margin-left:3vh;
 
 
   }
@@ -63,21 +140,85 @@ $flairColor:#28A366;
 
   #searchControl{
 
-    width:50%;
+    width:1050px;
     display:flex;
 
     align-items:center;
      justify-content:space-evenly;
+     .buttonUp{
+       .dropdown-toggle{
+         // width:100% !important;
+          height:50px !important;
+         width:50px !important;
+         background-image:url($dropdownBtn);
+         background-size: 100% 100%;
+         .filter-option{
+           opacity:0;
+         }
+       }
+       .bootstrap-select.show{
+         .dropdown-toggle{
+           background-color:grey;
+         }
+       }
+       .dropdown-toggle::after{
+         opacity:0;
+       }
+     }
+
+     #layoutGroup{
+       width:4em;
 
 
+       // .select2{
+       //   width:100% !important;
+       // }
+
+       .dropdown{
+         width:100% !important;
+         height:2rem;
+
+         .btn{
+           height:2rem !important;
+         }
+       }
+
+       .dropdown-toggle{
+         // width:100% !important;
+          height:50px !important;
+         width:3em !important;
+
+       }
+     }
+     #maxPlayerGroup{
+
+
+
+       #videoMax{
+         width:3rem !important;
+         height:2rem;
+
+       }
+       #videoMax:focus{
+         outline-color:$requestColor;
+       }
+     }
+
+
+     #locationLabel{
+       height:50px;
+       width:50px;
+       background-image:url($siteLogoHover);
+     }
     #timeGroup{
       display:flex;
       flex-direction:column;
       justify-content:center;
       height:100%;
       position:relative;
-      min-width:10rem;
-      max-width:60%;
+      width:30%;
+      // min-width:10rem;
+      // max-width:60%;
       .bootstrap-datetimepicker-widget{
 
         width:150% !important;
@@ -92,13 +233,18 @@ $flairColor:#28A366;
     }
 
     #searchButton{
-      max-width:10%;
+      //max-width:10%;
       border-radius: 15%;
+      //height:1.3rem;
+      height:75px;
+      width:75px;
+
       //margin-bottom: -15vh;
       // width:16%;
       // height:60%;
-      background-color:$secondaryColor;
-      color:$flairColor;
+      background-color:white;
+      color:$requestColor;
+      font-size:3rem;
     }
 
     #locationGroup{
@@ -109,83 +255,109 @@ $flairColor:#28A366;
       max-width:15%;
     }
 
-  }
-
-  #playerControl{
-
-    display:flex;
-    width:40%;
-    //background-color:$mainColor;
-    align-items: center;
-    justify-content: space-evenly;
-
     #playButton{
       background-size:100% 100%;
       background-image:url($playButton);
-      background-color: Transparent;
+      background-color: white;
        outline:none;
-      height:10vh;
-      width:10vh;
+      height:75px;
+      width:75px;
       border:none;
       background-repeat: no-repeat;
+      padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+
+    border-image: initial;
     }
 
     #playButton:active{
 
-      background-size:80% 80%;
+      // background-size:90% 90%;
+      outline:2px solid $requestColor;
 
     }
 
     #pauseButton{
       background-size:100% 100%;
       background-image:url($pauseButton);
-      background-color: Transparent;
+      background-color: white;
        outline:none;
-      height:10vh;
-      width:10vh;
+      height:75px;
+      width:75px;
       border:none;
       background-repeat: no-repeat;
+      padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+
+    border-image: initial;
 
     }
     #pauseButton:active{
-    background-size:80% 80%;
+    // background-size:80% 80%;
+    outline:2px solid $requestColor;
 
     }
 
-    #linkShare{
-      border-radius:5%;
-    }
+  }
+
+  #playerControl{
+
+    display:flex;
+    width:100px;
+    //background-color:$mainColor;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+    // .select2{
+    //   width:100% !important;
+    // }
+
+
+
+
+
+
+
 
 
   }
 
   #iconGroup{
 
-    display:flex;
-    width:10%;
+    width:50px;
     #infoIcon{
-      height:7vh;
-      width:7vh;
-
-      margin-right:3vh;
+      height:45px;
+      width:45px;
+      margin-top:4px;
+      //margin-right:3vh;
       background-size:100% 100%;
       background-image:url($infoIcon);
-      background-color: Transparent;
+      background-color: White;
       outline:none;
       border:none;
       background-repeat: no-repeat;
       cursor:pointer;
+      padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+
+    border-image: initial;
     }
     #infoIcon:active{
 
-      background-size:80% 80%;
+      // background-size:95% 95%;
+      outline:2px solid $requestColor;
 
     }
-    #languageSelector{
-      height:7vh;
-      width:7vh;
 
-      margin-right:3vh;
+    #languageSelector{
+      height:50px;
+      width:50px;
+
+    //  margin-right:3vh;
       background-size:100% 100%;
       background-image:url($languageIcon);
       background-color: Transparent;
@@ -196,7 +368,16 @@ $flairColor:#28A366;
 
     }
     #languageSelector:active{
-      background-size:80% 80%;
+      // background-size:90% 90%;
+      outline:2px solid $requestColor;
+    }
+    #linkShare{
+      margin-bottom:4px;
+      margin-top:2px;
+      border-radius:5%;
+      height:45px;
+      width:45px;
+      font-size:2rem;
     }
 
   }
@@ -319,6 +500,7 @@ $flairColor:#28A366;
         background-size:contain;
         background-repeat:no-repeat;
         border:1px solid black;
+        height:2rem;
       }
     }
     .arrangementBar:hover{
@@ -369,7 +551,7 @@ body{
 }
 
 .input-group-append{
-  height:1.2rem;
+  height:2rem;
   width:2rem;
 }
 
@@ -408,9 +590,7 @@ body{
   cursor:pointer;
 }
 
-.select2{
-  width:100% !important;
-}
+
 
 .placard{
   font-size:75%;
@@ -422,4 +602,16 @@ body{
 .select2-results__options{
   background-color:white;
   width:200%;
+}
+
+@media only screen and (max-width: 1199px) {
+
+  #headContainer{
+    min-width:1200px;
+    // justify-content:flex-start;
+
+  }
+  #sizeAlert{
+    height:2rem;
+    text-align:center;}
 }
