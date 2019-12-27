@@ -221,7 +221,11 @@ button:focus {
   height: 40px;
   width: 40px;
   margin-top: 9px;
-  background-size: 100% 100%;
+  background-size: 80% 80%;
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
   background-image: url("../images/faInfo.png");
   background-color: White;
   outline: none;
