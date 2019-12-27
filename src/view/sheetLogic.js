@@ -278,7 +278,7 @@ let searchSystem={
       alert("Start time is Mandatory, please select a start time and search again!");
       return
     }
-    if (pageSearch.length && !pageSearch.includes("NOFILTER")){
+    if (pageSearch.length){
       pageSearch.forEach((page, index)=>{
         if (index>0){
           solrPage+=` OR `;
@@ -294,7 +294,10 @@ let searchSystem={
       query+=solrPage;
 
     }
-    if (locationSearch.length && !locationSearch.includes("NOFILTER")){
+    else{
+      $("#sourceSelector").selectpicker('selectAll');
+    }
+    if (locationSearch.length){
       locationSearch.forEach((location, index)=>{
         if (index>0){
           solrLocation+=` OR `;
@@ -308,6 +311,8 @@ let searchSystem={
       solrLocation+=")";
       searchSettings.location=solrLocation;
       query+=solrLocation;
+    }else{
+      $("#locationSelector").selectpicker('selectAll');
     }
 
 
